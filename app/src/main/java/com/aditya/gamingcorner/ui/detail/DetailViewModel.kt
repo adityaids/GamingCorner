@@ -1,4 +1,6 @@
 package com.aditya.gamingcorner.ui.detail
 
-class DetailViewModel {
+import androidx.lifecycle.ViewModel
+
+class DetailViewModel: ViewModel() {
 }

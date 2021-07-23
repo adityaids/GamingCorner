@@ -1,4 +1,6 @@
 package com.aditya.gamingcorner.ui.main
 
-class MainViewModel {
+import androidx.lifecycle.ViewModel
+
+class MainViewModel: ViewModel() {
 }
