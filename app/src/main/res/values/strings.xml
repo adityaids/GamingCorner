@@ -5,4 +5,7 @@
     <string name="title_feature">Favorit</string>
     <string name="intro">Find out usefull information about your favorite games, You can find detail information like stories, reviews, ratings, and latest update.</string>
     <string name="title">Game Corner</string>
+    <string name="popular_games">Popular Games</string>
+    <string name="search">Search</string>
+    <string name="latest_games">Latest Games</string>
 </resources>
