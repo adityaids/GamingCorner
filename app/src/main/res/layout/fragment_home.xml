@@ -29,7 +29,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/btn_search"
         android:background="@drawable/circle_button"
-        app:icon="@drawable/ic_favorite"
+        app:icon="@drawable/ic_favorite_border"
         app:iconGravity="textStart"
         app:iconPadding="0dp"/>
 
