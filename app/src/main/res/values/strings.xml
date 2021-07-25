@@ -8,4 +8,5 @@
     <string name="popular_games">Popular Games</string>
     <string name="search">Search</string>
     <string name="latest_games">Latest Games</string>
+    <string name="description_example">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut urna cursus erat tristique convallis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur fermentum turpis faucibus lorem dapibus facilisis non eu odio.</string>
 </resources>
