@@ -16,7 +16,7 @@
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/games_image"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_126sdp"
+            android:layout_height="match_parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -25,6 +25,15 @@
             app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSizeTop10Percent"
             />
 
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="#DD000000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_games_title"/>
+
         <TextView
             android:id="@+id/tv_games_title"
             android:layout_width="match_parent"
@@ -32,7 +41,8 @@
             android:layout_marginTop="@dimen/_4sdp"
             android:layout_marginStart="@dimen/_4sdp"
             android:layout_marginEnd="@dimen/_4sdp"
-            app:layout_constraintTop_toBottomOf="@id/games_image"
+            android:layout_marginBottom="@dimen/_38sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:ellipsize="end"
@@ -59,16 +69,24 @@
             tools:text="Ubisoft"/>
 
         <Button
-            android:layout_width="@dimen/_24sdp"
-            android:layout_height="@dimen/_24sdp"
-            style="@style/buttonView"
+            android:layout_width="@dimen/_18sdp"
+            android:layout_height="@dimen/_18sdp"
+            style="@style/Widget.MaterialComponents.Button.Icon"
             android:layout_marginBottom="@dimen/_8sdp"
             android:layout_marginEnd="@dimen/_8sdp"
-            android:background="@drawable/circle_button"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_games_publisher"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:icon="@drawable/ic_favorite_24"
+            android:backgroundTint="@color/secondary_light"
+            app:icon="@drawable/ic_favorite_border_24"
+            app:iconSize="@dimen/_14sdp"
             app:iconGravity="textStart"
-            app:iconPadding="0dp"/>
+            android:padding="0dp"
+            app:iconPadding="0dp"
+            android:insetLeft="0dp"
+            android:insetTop="0dp"
+            android:insetRight="0dp"
+            android:insetBottom="0dp"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MyApp.Button.Circle"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
