@@ -73,18 +73,32 @@
             tools:text="Captain Marvel 2020"/>
 
         <TextView
-            android:id="@+id/tv_games_description"
+            android:id="@+id/tv_games_publisher"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/_8sdp"
             android:layout_marginStart="@dimen/_8sdp"
             android:layout_marginEnd="@dimen/_8sdp"
             app:layout_constraintTop_toBottomOf="@id/tv_games_title"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:textSize="@dimen/_14ssp"
             android:ellipsize="end"
-            android:maxLines="3"
-            tools:text="@string/description_example"/>
+            android:maxLines="2"
+            tools:text="Publiser"/>
+
+        <RatingBar
+            android:id="@+id/rating_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="?android:attr/ratingBarStyleIndicator"
+            android:layout_marginBottom="@dimen/_4sdp"
+            android:layout_marginEnd="@dimen/_8sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_games_publisher"
+            android:progressTint="@color/secondary_dark"
+            android:progressBackgroundTint="@color/primary_dark"
+            android:numStars="5"
+            tools:rating="3.5"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
