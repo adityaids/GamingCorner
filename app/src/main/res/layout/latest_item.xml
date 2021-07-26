@@ -80,7 +80,7 @@
             android:backgroundTint="@color/secondary_light"
             app:icon="@drawable/ic_favorite_border_24"
             app:iconGravity="textStart"
-            android:padding="0dp"
+            android:padding="2dp"
             app:iconPadding="0dp"
             android:insetLeft="0dp"
             android:insetTop="0dp"
