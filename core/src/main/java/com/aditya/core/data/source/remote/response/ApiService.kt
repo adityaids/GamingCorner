@@ -7,18 +7,23 @@ import retrofit2.http.Query
 interface ApiService {
     @GET("games?key={key}&search={search}")
     suspend fun searchGame(
-        @Path("key") key: String,
-        @Path("search") search: String,
-        @Query(value = "autocomplete") autoComplete: Boolean = true
+        @Query("key") key: String,
+        @Query("search") search: String
     ): AutoFillGameListResponse
 
     @GET("games?key={key}&ordering=released")
     suspend fun latestGame(
-        @Path("key") key: String
+        @Query("key") key: String
     ): ListGameResponse
 
     @GET("games?key={key}&metacritics=75")
     suspend fun popularGames(
-        @Path("key") key: String
+        @Query("key") key: String
     ): ListGameResponse
+
+    @GET("games?key={key}/{id}")
+    suspend fun getGameDetail(
+        @Query("key") key: String,
+        @Path("id") gamesId: String
+    ): GamesDetailResponse
 }

@@ -30,7 +30,7 @@
             android:layout_height="@dimen/_96sdp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:srcCompat="@drawable/captain_marvel"
+            app:srcCompat="@drawable/controller"
             android:scaleType="centerCrop"
             app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize20Percent"/>
 

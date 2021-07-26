@@ -1,9 +1,8 @@
 package com.aditya.core.data.source.remote.response
 
 import com.google.gson.annotations.SerializedName
-import retrofit2.http.Field
 
-class GameResponse (
+data class GamesDetailResponse (
     @field:SerializedName("id")
     val id: String,
     @field:SerializedName("name")
@@ -12,6 +11,8 @@ class GameResponse (
     val image: String,
     @field:SerializedName("released")
     val released: String,
+    @field:SerializedName("description_raw")
+    val description: String,
     @field:SerializedName("rating")
     val rating: Float,
     var isFavorited: Boolean = false
