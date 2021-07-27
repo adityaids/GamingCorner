@@ -5,7 +5,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "favorite")
+@Entity(tableName = "Game")
 data class GameEntity (
     @PrimaryKey
     @NonNull
@@ -20,5 +20,7 @@ data class GameEntity (
     @ColumnInfo(name = "rating")
     val rating: Float,
     @ColumnInfo(name = "isFavorite")
-    val isFavorite: Boolean
+    val isFavorite: Boolean,
+    @ColumnInfo(name = "latest")
+    val isLatest: Boolean
     )

@@ -8,16 +8,34 @@ import com.aditya.core.data.source.remote.response.GamesDetailResponse
 
 object DataMapper {
 
-    fun mapResponsesToDomain(input: List<GameResponse>): List<GameModel> {
-        val gameList = ArrayList<GameModel>()
+    fun mapResponsesPopularToEntities(input: List<GameResponse>): List<GameEntity> {
+        val gameList = ArrayList<GameEntity>()
         input.map {
-            val game = GameModel(
+            val game = GameEntity(
                 id = it.id,
                 name = it.name,
                 gameImage = it.image,
                 released = it.released,
                 rating = it.rating,
-                isFavorite = false
+                isFavorite = false,
+                isLatest = false
+            )
+            gameList.add(game)
+        }
+        return gameList
+    }
+
+    fun mapResponsesLatestToEntities(input: List<GameResponse>): List<GameEntity> {
+        val gameList = ArrayList<GameEntity>()
+        input.map {
+            val game = GameEntity(
+                id = it.id,
+                name = it.name,
+                gameImage = it.image,
+                released = it.released,
+                rating = it.rating,
+                isFavorite = false,
+                isLatest = true
             )
             gameList.add(game)
         }
@@ -32,7 +50,8 @@ object DataMapper {
                 gameImage = it.gameImage,
                 released = it.released,
                 rating = it.rating,
-                isFavorite = it.isFavorite
+                isFavorite = it.isFavorite,
+                isLatest = it.isLatest
             )
         }
     fun mapDomainToEntity(input: GameModel) = GameEntity(
@@ -41,15 +60,7 @@ object DataMapper {
         gameImage = input.gameImage,
         released = input.released,
         rating = input.rating,
-        isFavorite = input.isFavorite
-    )
-    fun mapResponseDetailToDomain(input: GamesDetailResponse) = GameDetailModel(
-        id = input.id,
-        name = input.name,
-        gameImage = input.image,
-        description = input.description,
-        released = input.released,
-        rating = input.rating,
-        isFavorite = false
+        isFavorite = input.isFavorite,
+        isLatest = input.isLatest
     )
 }

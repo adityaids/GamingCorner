@@ -8,12 +8,18 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface FavoritDao {
-    @Query("SELECT * FROM favorite")
+    @Query("SELECT * FROM Game where latest = 1")
+    fun getLatestGame(): Flowable<List<GameEntity>>
+
+    @Query("SELECT * FROM Game where rating > 4.0")
+    fun getPopularGame(): Flowable<List<GameEntity>>
+
+    @Query("SELECT * FROM Game where isFavorite = 1")
     fun getAllFavorite(): Flowable<List<GameEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertGame(game: GameEntity): Completable
+    fun insertGame(game: List<GameEntity>): Completable
 
-    @Delete
-    fun deleteGame(game: GameEntity): Completable
+    @Update
+    fun updateGame(game: GameEntity): Completable
 }

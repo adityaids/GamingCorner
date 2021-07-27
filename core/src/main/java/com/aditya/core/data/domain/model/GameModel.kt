@@ -10,5 +10,6 @@ data class GameModel(
     val gameImage: String,
     val released: String,
     val rating: Float,
-    var isFavorite: Boolean
+    var isFavorite: Boolean,
+    var isLatest: Boolean
 )
