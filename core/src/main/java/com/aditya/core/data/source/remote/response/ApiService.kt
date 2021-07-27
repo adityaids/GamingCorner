@@ -13,18 +13,18 @@ interface ApiService {
     ): Flowable<AutoFillGameListResponse>
 
     @GET("games?key={key}&ordering=released")
-    suspend fun latestGame(
+    fun latestGame(
         @Query("key") key: String
-    ): ListGameResponse
+    ): Flowable<ListGameResponse>
 
     @GET("games?key={key}&metacritics=75")
-    suspend fun popularGames(
+    fun popularGames(
         @Query("key") key: String
-    ): ListGameResponse
+    ): Flowable<ListGameResponse>
 
     @GET("games?key={key}/{id}")
-    suspend fun getGameDetail(
+    fun getGameDetail(
         @Query("key") key: String,
         @Path("id") gamesId: String
-    ): GamesDetailResponse
+    ): Flowable<GamesDetailResponse>
 }

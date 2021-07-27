@@ -3,6 +3,7 @@ package com.aditya.gamingcorner.ui
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.aditya.core.data.domain.model.GameModel
 import com.aditya.core.data.source.remote.response.GameResponse
 import com.aditya.gamingcorner.databinding.LatestItemBinding
 import com.bumptech.glide.Glide
@@ -10,10 +11,10 @@ import java.util.ArrayList
 
 class LatestAdapter: RecyclerView.Adapter<LatestAdapter.LatestViewHolder>() {
 
-    private var listData = ArrayList<GameResponse>()
-    var onItemClick: ((GameResponse) -> Unit)? = null
+    private var listData = ArrayList<GameModel>()
+    var onItemClick: ((GameModel) -> Unit)? = null
 
-    fun setData(newListData: List<GameResponse>?) {
+    fun setData(newListData: List<GameModel>?) {
         if (newListData == null) return
         listData.clear()
         listData.addAll(newListData)
@@ -39,9 +40,9 @@ class LatestAdapter: RecyclerView.Adapter<LatestAdapter.LatestViewHolder>() {
     inner class LatestViewHolder(
         private val binding: LatestItemBinding
     ): RecyclerView.ViewHolder(binding.root) {
-        fun bind(data: GameResponse){
+        fun bind(data: GameModel){
             Glide.with(itemView.context)
-                .load(data.image)
+                .load(data.gameImage)
                 .into(binding.gamesImage)
             binding.tvGamesTitle.text = data.name
             binding.tvGamesReleased.text = data.released

@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.aditya.core.data.domain.model.GameModel
 import com.aditya.core.data.source.remote.response.GameResponse
 import com.aditya.gamingcorner.databinding.PopularGamesItemBinding
 import com.bumptech.glide.Glide
@@ -12,10 +13,10 @@ import java.util.ArrayList
 
 class PopularAdapter: RecyclerView.Adapter<PopularAdapter.PopularViewHolder>() {
 
-    private var listData = ArrayList<GameResponse>()
-    var onItemClick: ((GameResponse) -> Unit)? = null
+    private var listData = ArrayList<GameModel>()
+    var onItemClick: ((GameModel) -> Unit)? = null
 
-    fun setData(newListData: List<GameResponse>?) {
+    fun setData(newListData: List<GameModel>?) {
         if (newListData == null) return
         listData.clear()
         listData.addAll(newListData)
@@ -40,9 +41,9 @@ class PopularAdapter: RecyclerView.Adapter<PopularAdapter.PopularViewHolder>() {
         binding: PopularGamesItemBinding
     ): RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(data: GameResponse){
+        fun bind(data: GameModel){
             Glide.with(itemView.context)
-                .load(data.image)
+                .load(data.gameImage)
                 .into(binding.gameImage)
             binding.tvGamesTitle.text = data.name
             binding.tvGamesReleased.text = data.released
