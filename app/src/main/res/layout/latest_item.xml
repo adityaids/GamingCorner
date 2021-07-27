@@ -50,7 +50,7 @@
             tools:text="Captain Marvel: The New Avenger"/>
 
         <TextView
-            android:id="@+id/tv_games_publisher"
+            android:id="@+id/tv_games_released"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_4sdp"
@@ -64,7 +64,7 @@
             android:fontFamily="@font/amaranth"
             android:textColor="@color/white"
             android:textSize="@dimen/_8ssp"
-            tools:text="Ubisoft"/>
+            tools:text="18-01-1995"/>
 
         <com.google.android.material.button.MaterialButton
             android:layout_width="@dimen/_18sdp"

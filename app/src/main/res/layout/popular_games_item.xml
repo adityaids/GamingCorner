@@ -73,7 +73,7 @@
             tools:text="Captain Marvel 2020"/>
 
         <TextView
-            android:id="@+id/tv_games_publisher"
+            android:id="@+id/tv_games_released"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_8sdp"
@@ -84,7 +84,7 @@
             android:textSize="@dimen/_14ssp"
             android:ellipsize="end"
             android:maxLines="2"
-            tools:text="Publiser"/>
+            tools:text="18-01-1995"/>
 
         <RatingBar
             android:id="@+id/rating_bar"
@@ -95,7 +95,7 @@
             android:layout_marginEnd="@dimen/_8sdp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_games_publisher"
+            app:layout_constraintTop_toBottomOf="@id/tv_games_released"
             android:progressTint="@color/secondary_dark"
             android:progressBackgroundTint="@color/primary_dark"
             android:numStars="5"
