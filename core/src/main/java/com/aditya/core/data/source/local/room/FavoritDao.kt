@@ -1,9 +1,6 @@
 package com.aditya.core.data.source.local.room
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.aditya.core.data.source.local.entity.GameEntity
 import io.reactivex.Completable
 import io.reactivex.Flowable
@@ -16,4 +13,7 @@ interface FavoritDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertGame(game: GameEntity): Completable
+
+    @Delete
+    fun deleteGame(game: GameEntity): Completable
 }

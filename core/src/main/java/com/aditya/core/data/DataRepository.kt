@@ -27,6 +27,10 @@ class DataRepository(
         TODO("Not yet implemented")
     }
 
+    override fun deleteFavorit(game: GameModel) {
+        TODO("Not yet implemented")
+    }
+
     override fun getFavoritList(): Flowable<List<GameModel>> {
         TODO("Not yet implemented")
     }

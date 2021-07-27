@@ -10,5 +10,6 @@ interface IGameRepository {
     fun getLatestGame(): Flowable<List<GameModel>>
     fun getDetail(id: String): Flowable<GameDetailModel>
     fun setFavorit(game: GameModel)
+    fun deleteFavorit(game: GameModel)
     fun getFavoritList(): Flowable<List<GameModel>>
 }
