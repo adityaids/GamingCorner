@@ -26,7 +26,8 @@ class DataRepository(
             return localDataSource.getPopularGame().map { DataMapper.mapEntitiesToDomain(it) }
         }
 
-        override fun shouldFetch(data: List<GameModel>?): Boolean = true
+        override fun shouldFetch(data: List<GameModel>?): Boolean =
+            data == null || data.isEmpty()
 
         override fun createCall(): Flowable<ApiResponse<List<GameResponse>>> =
             remoteDataSource.getPopular()
@@ -47,7 +48,8 @@ class DataRepository(
                 return localDataSource.getLatestGame().map { DataMapper.mapEntitiesToDomain(it) }
             }
 
-            override fun shouldFetch(data: List<GameModel>?): Boolean = true
+            override fun shouldFetch(data: List<GameModel>?): Boolean =
+                data == null || data.isEmpty()
 
             override fun createCall(): Flowable<ApiResponse<List<GameResponse>>> =
                 remoteDataSource.getLatest()
@@ -68,7 +70,8 @@ class DataRepository(
                 return localDataSource.getDetailGame(id).map { DataMapper.mapDetailEntityToDomain(it) }
             }
 
-            override fun shouldFetch(data: GameDetailModel?): Boolean = true
+            override fun shouldFetch(data: GameDetailModel?): Boolean =
+                data == null
 
             override fun createCall(): Flowable<ApiResponse<GamesDetailResponse>> =
                 remoteDataSource.getGameDetail(id)
@@ -83,15 +86,15 @@ class DataRepository(
         }.asFlowable()
 
     override fun setFavorit(game: GameModel) {
-        TODO("Not yet implemented")
+        localDataSource.updateFavorit(DataMapper.mapDomainToEntity(game))
     }
 
-    override fun deleteFavorit(game: GameModel) {
-        TODO("Not yet implemented")
+    override fun updateFavorit(game: GameModel) {
+        localDataSource.updateFavorit(DataMapper.mapDomainToEntity(game))
     }
 
     override fun getFavoritList(): Flowable<List<GameModel>> {
-        TODO("Not yet implemented")
+        return localDataSource.getAllFavorit().map { DataMapper.mapEntitiesToDomain(it) }
     }
 
 }

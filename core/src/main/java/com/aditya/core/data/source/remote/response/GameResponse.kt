@@ -11,8 +11,9 @@ class GameResponse (
     @field:SerializedName("background_image")
     val image: String,
     @field:SerializedName("released")
-    val released: String,
+    val released: String?,
     @field:SerializedName("rating")
     val rating: Float,
-    var isFavorited: Boolean = false
+    var isFavorited: Boolean = false,
+    var isLatest: Boolean = false
         )

@@ -18,7 +18,7 @@ object DataMapper {
                 id = it.id,
                 name = it.name,
                 gameImage = it.image,
-                released = it.released,
+                released = it.released?:"Unknown",
                 rating = it.rating,
                 isFavorite = false,
                 isLatest = false
@@ -35,7 +35,7 @@ object DataMapper {
                 id = it.id,
                 name = it.name,
                 gameImage = it.image,
-                released = it.released,
+                released = it.released?:"Unknown",
                 rating = it.rating,
                 isFavorite = false,
                 isLatest = true

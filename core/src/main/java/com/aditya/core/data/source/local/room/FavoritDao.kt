@@ -19,7 +19,7 @@ interface FavoritDao {
     @Query("SELECT * FROM Game where isFavorite = 1")
     fun getAllFavorite(): Flowable<List<GameEntity>>
 
-    @Query("SELECT * FROM Game where id = :id")
+    @Query("SELECT * FROM game_detail where id = :id")
     fun getDetailGame(id: String): Flowable<GameDetailEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

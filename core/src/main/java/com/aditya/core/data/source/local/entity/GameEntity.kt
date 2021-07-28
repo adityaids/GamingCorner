@@ -13,7 +13,7 @@ data class GameEntity (
     val id: String,
     @ColumnInfo(name = "name")
     val name: String,
-    @ColumnInfo(name = "image")
+    @ColumnInfo(name = "background_image")
     val gameImage: String,
     @ColumnInfo(name = "released")
     val released: String,

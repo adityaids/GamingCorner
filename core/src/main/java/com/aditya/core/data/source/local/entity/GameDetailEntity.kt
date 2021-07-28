@@ -2,8 +2,10 @@ package com.aditya.core.data.source.local.entity
 
 import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
+import androidx.room.Entity
 import androidx.room.PrimaryKey
 
+@Entity(tableName = "game_detail")
 data class GameDetailEntity(
     @PrimaryKey
     @NonNull
@@ -11,7 +13,7 @@ data class GameDetailEntity(
     val id: String,
     @ColumnInfo(name = "name")
     val name: String,
-    @ColumnInfo(name = "image")
+    @ColumnInfo(name = "background_image")
     val gameImage: String,
     @ColumnInfo(name = "description")
     val description: String,

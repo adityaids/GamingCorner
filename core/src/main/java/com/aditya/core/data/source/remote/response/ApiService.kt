@@ -6,23 +6,23 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ApiService {
-    @GET("games?key={key}&search={search}")
+    @GET("games?key=&search=")
     fun searchGame(
         @Query("key") key: String,
         @Query("search") search: String
     ): Flowable<AutoFillGameListResponse>
 
-    @GET("games?key={key}&ordering=released")
+    @GET("games?key=&ordering=released")
     fun latestGame(
         @Query("key") key: String
     ): Flowable<ListGameResponse>
 
-    @GET("games?key={key}&metacritics=75")
+    @GET("games?key=&metacritics=75")
     fun popularGames(
         @Query("key") key: String
     ): Flowable<ListGameResponse>
 
-    @GET("games?key={key}/{id}")
+    @GET("games?key=/{id}")
     fun getGameDetail(
         @Query("key") key: String,
         @Path("id") gamesId: String
