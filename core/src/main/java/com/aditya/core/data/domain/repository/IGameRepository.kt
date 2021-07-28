@@ -9,7 +9,7 @@ import io.reactivex.Flowable
 interface IGameRepository {
     fun getPopularGame(): Flowable<Resource<List<GameModel>>>
     fun getLatestGame(): Flowable<Resource<List<GameModel>>>
-    fun getDetail(id: String): Flowable<GameDetailModel>
+    fun getDetail(id: String): Flowable<Resource<GameDetailModel>>
     fun setFavorit(game: GameModel)
     fun deleteFavorit(game: GameModel)
     fun getFavoritList(): Flowable<List<GameModel>>

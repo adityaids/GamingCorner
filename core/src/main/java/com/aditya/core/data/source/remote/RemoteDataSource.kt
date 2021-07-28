@@ -79,7 +79,6 @@ class RemoteDataSource(private val apiService: ApiService) {
         client
             .subscribeOn(Schedulers.computation())
             .observeOn(AndroidSchedulers.mainThread())
-            .take(1)
             .subscribe ({ response ->
                 resultData.onNext(if (response != null) ApiResponse.Success(response) else ApiResponse.Empty)
             }, { error ->
