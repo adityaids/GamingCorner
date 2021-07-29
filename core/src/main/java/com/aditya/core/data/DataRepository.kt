@@ -61,7 +61,7 @@ class DataRepository(
     override fun getDetail(id: Int): Flow<Resource<GameDetailModel>> =
         object : NetworkBoundSource<GameDetailModel, GamesDetailResponse>(){
             override fun loadFromDB(): Flow<GameDetailModel> {
-                Log.d("loadDb", localDataSource.getDetailGame(id).toString())
+                Log.d("loadDb", id.toString())
                 return localDataSource.getDetailGame(id).map { DataMapper.mapDetailEntityToDomain(it) }
             }
 
