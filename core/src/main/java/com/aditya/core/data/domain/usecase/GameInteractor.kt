@@ -13,7 +13,7 @@ class GameInteractor(private val gameRepository: IGameRepository): GameUsecase {
     override fun getLatestGame(): Flowable<Resource<List<GameModel>>> =
         gameRepository.getLatestGame()
 
-    override fun getDetail(id: String): Flowable<Resource<GameDetailModel>> =
+    override fun getDetail(id: Int): Flowable<Resource<GameDetailModel>> =
         gameRepository.getDetail(id)
 
     override fun setFavorit(game: GameModel) = gameRepository.setFavorit(game)

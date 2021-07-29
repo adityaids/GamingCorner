@@ -8,7 +8,7 @@ import io.reactivex.Flowable
 interface GameUsecase {
     fun getPopularGame(): Flowable<Resource<List<GameModel>>>
     fun getLatestGame(): Flowable<Resource<List<GameModel>>>
-    fun getDetail(id: String): Flowable<Resource<GameDetailModel>>
+    fun getDetail(id: Int): Flowable<Resource<GameDetailModel>>
     fun setFavorit(game: GameModel)
     fun updateFavorit(game: GameModel)
     fun getFavoritList(): Flowable<List<GameModel>>

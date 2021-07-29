@@ -18,7 +18,6 @@ abstract class NetworkBoundSource<ResultType, RequestType> {
         val db = dbSource
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .take(1)
             .subscribe { value ->
                 dbSource.unsubscribeOn(Schedulers.io())
                 if (shouldFetch(value)) {
@@ -48,7 +47,6 @@ abstract class NetworkBoundSource<ResultType, RequestType> {
         val response = apiResponse
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .take(1)
             .doOnComplete {
                 mCompositeDisposable.dispose()
             }
@@ -59,7 +57,6 @@ abstract class NetworkBoundSource<ResultType, RequestType> {
                         val dbSource = loadFromDB()
                         dbSource.subscribeOn(Schedulers.computation())
                             .observeOn(AndroidSchedulers.mainThread())
-                            .take(1)
                             .subscribe {
                                 dbSource.unsubscribeOn(Schedulers.io())
                                 result.onNext(Resource.Success(it))
@@ -69,7 +66,6 @@ abstract class NetworkBoundSource<ResultType, RequestType> {
                         val dbSource = loadFromDB()
                         dbSource.subscribeOn(Schedulers.computation())
                             .observeOn(AndroidSchedulers.mainThread())
-                            .take(1)
                             .subscribe {
                                 dbSource.unsubscribeOn(Schedulers.io())
                                 result.onNext(Resource.Success(it))

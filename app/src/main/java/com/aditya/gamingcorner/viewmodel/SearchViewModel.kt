@@ -7,5 +7,5 @@ import com.aditya.core.data.domain.usecase.GameUsecase
 
 class SearchViewModel(private val gameUsecase: GameUsecase): ViewModel() {
     fun setFavorit(game: GameModel) = gameUsecase.setFavorit(game)
-    fun getDetailGame(id: String) = LiveDataReactiveStreams.fromPublisher(gameUsecase.getDetail(id))
+    fun getDetailGame(id: Int) = LiveDataReactiveStreams.fromPublisher(gameUsecase.getDetail(id))
 }

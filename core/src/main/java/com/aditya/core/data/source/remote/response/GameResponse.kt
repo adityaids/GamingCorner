@@ -5,7 +5,7 @@ import retrofit2.http.Field
 
 class GameResponse (
     @field:SerializedName("id")
-    val id: String,
+    val id: Int,
     @field:SerializedName("name")
     val name: String,
     @field:SerializedName("background_image")

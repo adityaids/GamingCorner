@@ -20,12 +20,12 @@ interface FavoritDao {
     fun getAllFavorite(): Flowable<List<GameEntity>>
 
     @Query("SELECT * FROM game_detail where id = :id")
-    fun getDetailGame(id: String): Flowable<GameDetailEntity>
+    fun getDetailGame(id: Int): Flowable<GameDetailEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertGame(game: List<GameEntity>): Completable
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertDetailGame(game: GameDetailEntity): Completable
 
     @Update

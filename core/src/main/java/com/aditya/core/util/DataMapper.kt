@@ -61,7 +61,7 @@ object DataMapper {
         id = input.id,
         name = input.name,
         gameImage = input.gameImage,
-        released = input.released,
+        released = input.released?:"unknown",
         rating = input.rating,
         isFavorite = input.isFavorite,
         isLatest = input.isLatest
@@ -72,7 +72,7 @@ object DataMapper {
         name = input.name,
         gameImage = input.image,
         description = input.description,
-        released = input.released,
+        released = input.released?:"unknown",
         rating = input.rating,
         isFavorite = false,
         isLatest = false

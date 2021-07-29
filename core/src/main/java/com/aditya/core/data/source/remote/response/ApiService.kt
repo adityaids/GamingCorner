@@ -22,9 +22,9 @@ interface ApiService {
         @Query("key") key: String
     ): Flowable<ListGameResponse>
 
-    @GET("games?key=/{id}")
+    @GET("games/{id}")
     fun getGameDetail(
         @Query("key") key: String,
-        @Path("id") gamesId: String
+        @Path("id") gamesId: Int
     ): Flowable<GamesDetailResponse>
 }

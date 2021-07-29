@@ -9,6 +9,6 @@ import io.reactivex.Flowable
 
 class FavoritViewModel(private val gameUsecase: GameUsecase): ViewModel() {
     val favoritGameList = LiveDataReactiveStreams.fromPublisher(gameUsecase.getFavoritList())
-    fun getDetailGame(id: String) = LiveDataReactiveStreams.fromPublisher(gameUsecase.getDetail(id))
+    fun getDetailGame(id: Int) = LiveDataReactiveStreams.fromPublisher(gameUsecase.getDetail(id))
 
 }

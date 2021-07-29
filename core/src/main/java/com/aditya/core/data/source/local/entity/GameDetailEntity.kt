@@ -10,7 +10,7 @@ data class GameDetailEntity(
     @PrimaryKey
     @NonNull
     @ColumnInfo(name = "id")
-    val id: String,
+    val id: Int,
     @ColumnInfo(name = "name")
     val name: String,
     @ColumnInfo(name = "background_image")

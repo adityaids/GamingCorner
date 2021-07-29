@@ -1,5 +1,6 @@
 package com.aditya.core.data
 
+import android.util.Log
 import com.aditya.core.data.domain.model.GameDetailModel
 import com.aditya.core.data.domain.model.GameModel
 import com.aditya.core.data.domain.repository.IGameRepository
@@ -64,20 +65,21 @@ class DataRepository(
 
         }.asFlowable()
 
-    override fun getDetail(id: String): Flowable<Resource<GameDetailModel>> =
+    override fun getDetail(id: Int): Flowable<Resource<GameDetailModel>> =
         object : NetworkBoundSource<GameDetailModel, GamesDetailResponse>(){
             override fun loadFromDB(): Flowable<GameDetailModel> {
+                Log.d("loadDb", localDataSource.getDetailGame(id).toString())
                 return localDataSource.getDetailGame(id).map { DataMapper.mapDetailEntityToDomain(it) }
             }
 
-            override fun shouldFetch(data: GameDetailModel?): Boolean =
-                data == null
+            override fun shouldFetch(data: GameDetailModel?): Boolean = true
 
             override fun createCall(): Flowable<ApiResponse<GamesDetailResponse>> =
                 remoteDataSource.getGameDetail(id)
 
             override fun saveCallResult(data: GamesDetailResponse) {
                 val gameDetail = DataMapper.mapDetailResponseToDomain(data)
+                Log.d("saveCall", gameDetail.name)
                 localDataSource.insertDetailGame(gameDetail)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())

@@ -5,10 +5,10 @@ import androidx.room.ColumnInfo
 import androidx.room.PrimaryKey
 
 data class GameModel(
-    val id: String,
+    val id: Int,
     val name: String,
     val gameImage: String,
-    val released: String,
+    val released: String?,
     val rating: Float,
     var isFavorite: Boolean,
     var isLatest: Boolean
