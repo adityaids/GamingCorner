@@ -12,7 +12,6 @@ import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
@@ -21,7 +20,7 @@ val databaseModule = module {
     single {
         Room.databaseBuilder(
             androidContext(),
-            GameDatabase::class.java, "Tourism.db"
+            GameDatabase::class.java, "gameapp.db"
         ).fallbackToDestructiveMigration().build()
     }
 }
@@ -37,7 +36,6 @@ val networkModule = module {
     single {
         val retrofit = Retrofit.Builder()
             .baseUrl("https://api.rawg.io/api/")
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
             .client(get())
             .build()

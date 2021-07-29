@@ -25,7 +25,7 @@ buildscript {
     ext.lottie_version = "3.7.2"
 
     //database
-    ext.room_version = "2.2.5"
+    ext.room_version = "2.3.0"
 
     //http request
     ext.retrofit_version = "2.9.0"

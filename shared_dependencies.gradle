@@ -21,7 +21,4 @@ dependencies {
     implementation "org.koin:koin-core:$koin_version"
     implementation "org.koin:koin-android:$koin_version"
     implementation "org.koin:koin-android-viewmodel:$koin_version"
-
-    //rx
-    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
 }

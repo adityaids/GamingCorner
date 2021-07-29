@@ -4,89 +4,78 @@ import android.annotation.SuppressLint
 import android.util.Log
 import com.aditya.core.data.source.remote.network.ApiResponse
 import com.aditya.core.data.source.remote.response.*
-import io.reactivex.BackpressureStrategy
-import io.reactivex.Flowable
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
-import io.reactivex.subjects.PublishSubject
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 
 class RemoteDataSource(private val apiService: ApiService) {
-    private val API_KEY: String = "4fa30b393b76408194e80b0dde0e3860"
-
-    @SuppressLint("CheckResult")
-    fun getPopular(): Flowable<ApiResponse<List<GameResponse>>>{
-        val resultData = PublishSubject.create<ApiResponse<List<GameResponse>>>()
-        val client = apiService.popularGames(API_KEY)
-
-        client
-            .subscribeOn(Schedulers.computation())
-            .observeOn(AndroidSchedulers.mainThread())
-            .take(1)
-            .subscribe ({ response ->
-                val dataArray = response.gameList
-                resultData.onNext(if (dataArray.isNotEmpty()) ApiResponse.Success(dataArray) else ApiResponse.Empty)
-            }, { error ->
-                resultData.onNext(ApiResponse.Error(error.message.toString()))
-                Log.e("RemoteDataSource", error.toString())
-            })
-
-        return resultData.toFlowable(BackpressureStrategy.BUFFER)
-    }
-    @SuppressLint("CheckResult")
-    fun getLatest(): Flowable<ApiResponse<List<GameResponse>>>{
-        val resultData = PublishSubject.create<ApiResponse<List<GameResponse>>>()
-        val client = apiService.latestGame(API_KEY)
-
-        client
-            .subscribeOn(Schedulers.computation())
-            .observeOn(AndroidSchedulers.mainThread())
-            .take(1)
-            .subscribe ({ response ->
-                val dataArray = response.gameList
-                resultData.onNext(if (dataArray.isNotEmpty()) ApiResponse.Success(dataArray) else ApiResponse.Empty)
-            }, { error ->
-                resultData.onNext(ApiResponse.Error(error.message.toString()))
-                Log.e("RemoteDataSource", error.toString())
-            })
-
-        return resultData.toFlowable(BackpressureStrategy.BUFFER)
+    companion object{
+        const val API_KEY: String = "4fa30b393b76408194e80b0dde0e3860"
     }
 
     @SuppressLint("CheckResult")
-    fun getSearchResult(title: String): Flowable<ApiResponse<List<AutoFillGameResponse>>>{
-        val resultData = PublishSubject.create<ApiResponse<List<AutoFillGameResponse>>>()
-        val client = apiService.searchGame(API_KEY, title)
+    suspend fun getPopular(): Flow<ApiResponse<List<GameResponse>>> {
+        return flow {
+            try {
+                val response = apiService.popularGames(API_KEY)
+                val dataArray = response.gameList
+                if (dataArray.isNotEmpty()){
+                    emit(ApiResponse.Success(response.gameList))
+                } else {
+                    emit(ApiResponse.Empty)
+                }
+            } catch (e : Exception){
+                emit(ApiResponse.Error(e.toString()))
+                Log.e("RemoteDataSource", e.toString())
+            }
+        }.flowOn(Dispatchers.IO)
+    }
+    @SuppressLint("CheckResult")
+    suspend fun getLatest(): Flow<ApiResponse<List<GameResponse>>>{
+        return flow {
+            try {
+                val response = apiService.latestGame(API_KEY)
+                val dataArray = response.gameList
+                if (dataArray.isNotEmpty()){
+                    emit(ApiResponse.Success(response.gameList))
+                } else {
+                    emit(ApiResponse.Empty)
+                }
+            } catch (e : Exception){
+                emit(ApiResponse.Error(e.toString()))
+                Log.e("RemoteDataSource", e.toString())
+            }
+        }.flowOn(Dispatchers.Default)
+    }
 
-        client
-            .subscribeOn(Schedulers.computation())
-            .observeOn(AndroidSchedulers.mainThread())
-            .take(1)
-            .subscribe ({ response ->
+    @SuppressLint("CheckResult")
+    suspend fun getSearchResult(title: String): Flow<ApiResponse<List<AutoFillGameResponse>>>{
+        return flow {
+            try {
+                val response = apiService.searchGame(API_KEY, title)
                 val dataArray = response.autoFillGameList
-                resultData.onNext(if (dataArray.isNotEmpty()) ApiResponse.Success(dataArray) else ApiResponse.Empty)
-            }, { error ->
-                resultData.onNext(ApiResponse.Error(error.message.toString()))
-                Log.e("RemoteDataSource", error.toString())
-            })
-
-        return resultData.toFlowable(BackpressureStrategy.BUFFER)
+                if (dataArray.isNotEmpty()){
+                    emit(ApiResponse.Success(response.autoFillGameList))
+                } else {
+                    emit(ApiResponse.Empty)
+                }
+            } catch (e : Exception){
+                emit(ApiResponse.Error(e.toString()))
+                Log.e("RemoteDataSource", e.toString())
+            }
+        }.flowOn(Dispatchers.IO)
     }
     @SuppressLint("CheckResult")
-    fun getGameDetail(id: Int): Flowable<ApiResponse<GamesDetailResponse>>{
-        val resultData = PublishSubject.create<ApiResponse<GamesDetailResponse>>()
-        val client = apiService.getGameDetail(API_KEY, id)
-
-        client
-            .subscribeOn(Schedulers.computation())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe ({ response ->
-                Log.e("RemoteDataSource", response.toString())
-                resultData.onNext(if (response != null) ApiResponse.Success(response) else ApiResponse.Empty)
-            }, { error ->
-                resultData.onNext(ApiResponse.Error(error.message.toString()))
-                Log.e("RemoteDataSource", error.toString())
-            })
-
-        return resultData.toFlowable(BackpressureStrategy.BUFFER)
+    suspend fun getGameDetail(id: Int): Flow<ApiResponse<GamesDetailResponse>> {
+        return flow {
+            try {
+                val response = apiService.getGameDetail(API_KEY, id)
+                emit(ApiResponse.Success(response))
+            } catch (e: Exception) {
+                emit(ApiResponse.Error(e.toString()))
+                Log.e("RemoteDataSource", e.toString())
+            }
+        }.flowOn(Dispatchers.IO)
     }
 }
