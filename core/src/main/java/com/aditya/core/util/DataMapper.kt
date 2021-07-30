@@ -15,7 +15,7 @@ object DataMapper {
             val game = GameEntity(
                 id = it.id,
                 name = it.name,
-                gameImage = it.image,
+                gameImage = it.image?:"R.drawable.ic_broken_image",
                 released = it.released?:"Unknown",
                 rating = it.rating,
                 isFavorite = false,
@@ -32,7 +32,7 @@ object DataMapper {
             val game = GameEntity(
                 id = it.id,
                 name = it.name,
-                gameImage = it.image,
+                gameImage = it.image?:"R.drawable.ic_broken_image",
                 released = it.released?:"Unknown",
                 rating = it.rating,
                 isFavorite = false,
@@ -68,7 +68,7 @@ object DataMapper {
     fun mapDetailResponseToDomain(input: GamesDetailResponse) = GameDetailEntity(
         id = input.id,
         name = input.name,
-        gameImage = input.image,
+        gameImage = input.image?:"R.drawable.ic_broken_image",
         description = input.description,
         released = input.released?:"unknown",
         rating = input.rating,

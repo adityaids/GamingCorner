@@ -10,7 +10,5 @@ import com.aditya.core.data.source.Resource
 class MainViewModel(private val gameUsecase: GameUsecase): ViewModel() {
     val popularGameList = gameUsecase.getPopularGame().asLiveData()
     val latestGameList = gameUsecase.getLatestGame().asLiveData()
-    fun getDetailGame(id: Int): LiveData<Resource<GameDetailModel>> {
-        return gameUsecase.getDetail(id).asLiveData()
-    }
+    fun getDetailGame(id: Int) = gameUsecase.getDetail(id).asLiveData()
 }

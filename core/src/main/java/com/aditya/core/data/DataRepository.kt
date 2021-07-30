@@ -12,8 +12,7 @@ import com.aditya.core.data.source.remote.network.ApiResponse
 import com.aditya.core.data.source.remote.response.GameResponse
 import com.aditya.core.data.source.remote.response.GamesDetailResponse
 import com.aditya.core.util.DataMapper
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.*
 
 class DataRepository(
     private val remoteDataSource: RemoteDataSource,
@@ -61,11 +60,14 @@ class DataRepository(
     override fun getDetail(id: Int): Flow<Resource<GameDetailModel>> =
         object : NetworkBoundSource<GameDetailModel, GamesDetailResponse>(){
             override fun loadFromDB(): Flow<GameDetailModel> {
-                Log.d("loadDb", id.toString())
-                return localDataSource.getDetailGame(id).map { DataMapper.mapDetailEntityToDomain(it) }
+                Log.d("loadDb", localDataSource.getDetailGame(id).toString())
+                return localDataSource.getDetailGame(id).map { gameEntity ->
+                    DataMapper.mapDetailEntityToDomain(gameEntity)
+                }
             }
 
-            override fun shouldFetch(data: GameDetailModel?): Boolean = true
+            override fun shouldFetch(data: GameDetailModel?): Boolean =
+                data == null
 
             override suspend fun createCall(): Flow<ApiResponse<GamesDetailResponse>> =
                 remoteDataSource.getGameDetail(id)

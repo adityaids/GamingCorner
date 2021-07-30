@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
 
         popularAdapter.onItemClick = { selectedData ->
             viewModel.getDetailGame(selectedData.id).observe(this, {
-                Log.d("id", it.data?.name.toString())
+                Log.d("id", it.data?.id.toString())
                 if (it != null) {
                     when (it) {
                         is Resource.Loading -> activityMainBinding.progressBar.visibility = View.VISIBLE

@@ -14,7 +14,6 @@ class RemoteDataSource(private val apiService: ApiService) {
         const val API_KEY: String = "4fa30b393b76408194e80b0dde0e3860"
     }
 
-    @SuppressLint("CheckResult")
     suspend fun getPopular(): Flow<ApiResponse<List<GameResponse>>> {
         return flow {
             try {
@@ -31,7 +30,7 @@ class RemoteDataSource(private val apiService: ApiService) {
             }
         }.flowOn(Dispatchers.IO)
     }
-    @SuppressLint("CheckResult")
+
     suspend fun getLatest(): Flow<ApiResponse<List<GameResponse>>>{
         return flow {
             try {
@@ -49,7 +48,6 @@ class RemoteDataSource(private val apiService: ApiService) {
         }.flowOn(Dispatchers.IO)
     }
 
-    @SuppressLint("CheckResult")
     suspend fun getSearchResult(title: String): Flow<ApiResponse<List<AutoFillGameResponse>>>{
         return flow {
             try {
@@ -66,7 +64,7 @@ class RemoteDataSource(private val apiService: ApiService) {
             }
         }.flowOn(Dispatchers.IO)
     }
-    @SuppressLint("CheckResult")
+
     suspend fun getGameDetail(id: Int): Flow<ApiResponse<GamesDetailResponse>> {
         return flow {
             try {
