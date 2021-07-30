@@ -4,10 +4,8 @@ import com.aditya.core.data.domain.model.GameDetailModel
 import com.aditya.core.data.domain.model.GameModel
 import com.aditya.core.data.source.local.entity.GameDetailEntity
 import com.aditya.core.data.source.local.entity.GameEntity
-import com.aditya.core.data.source.remote.network.ApiResponse
 import com.aditya.core.data.source.remote.response.GameResponse
 import com.aditya.core.data.source.remote.response.GamesDetailResponse
-import retrofit2.Response
 
 object DataMapper {
 
