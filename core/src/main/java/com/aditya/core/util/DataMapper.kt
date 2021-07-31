@@ -65,12 +65,12 @@ object DataMapper {
         isLatest = input.isLatest
     )
 
-    fun mapDetailResponseToDomain(input: GamesDetailResponse) = GameDetailEntity(
+    fun mapDetailResponseToDomain(input: GamesDetailResponse) = GameDetailModel(
         id = input.id,
         name = input.name,
-        gameImage = input.image?:"R.drawable.ic_broken_image",
+        gameImage = input.image,
         description = input.description,
-        released = input.released?:"unknown",
+        released = input.released,
         rating = input.rating,
         isFavorite = false,
         isLatest = false

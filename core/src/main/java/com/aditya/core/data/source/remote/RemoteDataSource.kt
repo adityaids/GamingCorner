@@ -68,7 +68,7 @@ class RemoteDataSource(private val apiService: ApiService) {
     suspend fun getGameDetail(id: Int): Flow<ApiResponse<GamesDetailResponse>> {
         return flow {
             try {
-                val response = apiService.getGameDetail(API_KEY, id)
+                val response = apiService.getGameDetail(id, API_KEY)
                 emit(ApiResponse.Success(response))
             } catch (e: Exception) {
                 emit(ApiResponse.Error(e.toString()))

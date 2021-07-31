@@ -2,6 +2,7 @@ package com.aditya.core.data.source
 
 import com.aditya.core.data.source.remote.network.ApiResponse
 import kotlinx.coroutines.flow.*
+import okhttp3.internal.wait
 
 abstract class NetworkBoundSource<ResultType, RequestType> {
     private var result: Flow<Resource<ResultType>> = flow {
@@ -15,7 +16,7 @@ abstract class NetworkBoundSource<ResultType, RequestType> {
                     emitAll(loadFromDB().map { Resource.Success(it) })
                 }
                 is ApiResponse.Empty -> {
-                    emitAll(loadFromDB().map { Resource.Success(it) })
+                    emitAll(loadFromDB().map{ Resource.Success(it) }).wait()
                 }
                 is ApiResponse.Error -> {
                     onFetchFailed()

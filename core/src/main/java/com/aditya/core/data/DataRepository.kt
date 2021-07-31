@@ -10,7 +10,6 @@ import com.aditya.core.data.source.local.LocalDataSource
 import com.aditya.core.data.source.remote.RemoteDataSource
 import com.aditya.core.data.source.remote.network.ApiResponse
 import com.aditya.core.data.source.remote.response.GameResponse
-import com.aditya.core.data.source.remote.response.GamesDetailResponse
 import com.aditya.core.util.DataMapper
 import kotlinx.coroutines.flow.*
 
@@ -58,26 +57,16 @@ class DataRepository(
         }.asFlow()
 
     override fun getDetail(id: Int): Flow<Resource<GameDetailModel>> =
-        object : NetworkBoundSource<GameDetailModel, GamesDetailResponse>(){
-            override fun loadFromDB(): Flow<GameDetailModel> {
-                Log.d("loadDb", localDataSource.getDetailGame(id).toString())
-                return localDataSource.getDetailGame(id).map { gameEntity ->
-                    DataMapper.mapDetailEntityToDomain(gameEntity)
+        flow {
+            when (val apiResponse = remoteDataSource.getGameDetail(id).first()) {
+                is ApiResponse.Success -> {
+                    val data = DataMapper.mapDetailResponseToDomain(apiResponse.data)
+                    emit(Resource.Success(data))
                 }
+                is ApiResponse.Empty -> emit(Resource.Success(GameDetailModel()))
+                is ApiResponse.Error -> emit(Resource.Error<GameDetailModel>(apiResponse.errorMessage))
             }
-
-            override fun shouldFetch(data: GameDetailModel?): Boolean =
-                data == null
-
-            override suspend fun createCall(): Flow<ApiResponse<GamesDetailResponse>> =
-                remoteDataSource.getGameDetail(id)
-
-            override suspend fun saveCallResult(data: GamesDetailResponse) {
-                val gameDetail = DataMapper.mapDetailResponseToDomain(data)
-                Log.d("saveCall", gameDetail.name)
-                localDataSource.insertDetailGame(gameDetail)
-            }
-        }.asFlow()
+        }
 
     override suspend fun setFavorit(game: GameModel) {
         localDataSource.updateFavorit(DataMapper.mapDomainToEntity(game))
