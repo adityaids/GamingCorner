@@ -41,6 +41,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         popularAdapter.onItemClick = { selectedData ->
+            activityMainBinding.progressBar.visibility = View.VISIBLE
             viewModel.getDetailGame(selectedData.id).observe(this, {
                 if (it != null) {
                     when (it) {
@@ -54,6 +55,39 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
             })
+        }
+
+        latestAdapter.onItemClick = {selectedData->
+            activityMainBinding.progressBar.visibility = View.VISIBLE
+            viewModel.getDetailGame(selectedData.id).observe(this, {
+                if (it != null) {
+                    when (it) {
+                        is Resource.Loading -> activityMainBinding.progressBar.visibility = View.VISIBLE
+                        is Resource.Success -> {
+                            toDetail(it.data)
+                        }
+                        is Resource.Error -> {
+                            activityMainBinding.viewError.tvError.text = it.message ?: getString(R.string.error)
+                        }
+                    }
+                }
+            })
+        }
+
+        popularAdapter.onButtonFavoritClick = { data->
+            if (data.isFavorite) {
+                viewModel.updateFavorit(data)
+            } else {
+                viewModel.setFavorit(data)
+            }
+        }
+
+        latestAdapter.onButtonFavoritClick = { data ->
+            if (data.isFavorite) {
+                viewModel.updateFavorit(data)
+            } else {
+                viewModel.setFavorit(data)
+            }
         }
 
         viewModel.popularGameList.observe(this,{

@@ -10,12 +10,14 @@ import com.aditya.core.data.source.local.LocalDataSource
 import com.aditya.core.data.source.remote.RemoteDataSource
 import com.aditya.core.data.source.remote.network.ApiResponse
 import com.aditya.core.data.source.remote.response.GameResponse
+import com.aditya.core.util.AppExecutor
 import com.aditya.core.util.DataMapper
 import kotlinx.coroutines.flow.*
 
 class DataRepository(
     private val remoteDataSource: RemoteDataSource,
     private val localDataSource: LocalDataSource,
+    private val appExecutor: AppExecutor
 ) : IGameRepository {
 
     override fun getPopularGame(): Flow<Resource<List<GameModel>>> =
@@ -68,12 +70,14 @@ class DataRepository(
             }
         }
 
-    override suspend fun setFavorit(game: GameModel) {
-        localDataSource.updateFavorit(DataMapper.mapDomainToEntity(game))
+    override fun setFavorit(game: GameModel) {
+        val gameEntity = DataMapper.mapDomainToEntity(game)
+        appExecutor.diskIO().execute{localDataSource.updateFavorit(gameEntity)}
     }
 
     override fun updateFavorit(game: GameModel) {
-        localDataSource.updateFavorit(DataMapper.mapDomainToEntity(game))
+        val gameEntity = DataMapper.mapDomainToEntity(game)
+        appExecutor.diskIO().execute{localDataSource.updateFavorit(gameEntity)}
     }
 
     override fun getFavoritList(): Flow<List<GameModel>> {

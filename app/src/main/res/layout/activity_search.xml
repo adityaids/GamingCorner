@@ -37,6 +37,6 @@
         app:layout_constraintTop_toBottomOf="@id/til_search"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:listitem="@layout/games_item"/>
+        tools:listitem="@layout/favorit_item"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

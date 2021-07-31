@@ -4,11 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.aditya.core.data.domain.model.GameModel
-import com.aditya.core.data.source.remote.response.GameResponse
-import com.aditya.gamingcorner.databinding.GamesItemBinding
+import com.aditya.gamingcorner.databinding.FavoritItemBinding
 import java.util.ArrayList
 
-class GamesAdapter: RecyclerView.Adapter<GamesAdapter.GameViewHolder>() {
+class FavoritAdapter: RecyclerView.Adapter<FavoritAdapter.GameViewHolder>() {
 
     private var listData = ArrayList<GameModel>()
     var onItemClick: ((GameModel) -> Unit)? = null
@@ -24,7 +23,7 @@ class GamesAdapter: RecyclerView.Adapter<GamesAdapter.GameViewHolder>() {
         parent: ViewGroup,
         viewType: Int
     ): GameViewHolder {
-        val binding = GamesItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = FavoritItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return GameViewHolder(binding)
     }
 
@@ -36,7 +35,7 @@ class GamesAdapter: RecyclerView.Adapter<GamesAdapter.GameViewHolder>() {
     override fun getItemCount(): Int = listData.size
 
     inner class GameViewHolder(
-        private val binding: GamesItemBinding
+        private val binding: FavoritItemBinding
     ): RecyclerView.ViewHolder(binding.root) {
         fun bind(data: GameModel){
 

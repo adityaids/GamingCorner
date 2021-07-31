@@ -7,6 +7,7 @@ import com.aditya.core.data.source.local.LocalDataSource
 import com.aditya.core.data.source.local.room.GameDatabase
 import com.aditya.core.data.source.remote.RemoteDataSource
 import com.aditya.core.data.source.remote.response.ApiService
+import com.aditya.core.util.AppExecutor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
@@ -46,5 +47,6 @@ val networkModule = module {
 val repositoryModule = module {
     single { LocalDataSource(get()) }
     single { RemoteDataSource(get()) }
-    single<IGameRepository> { DataRepository(get(), get()) }
+    factory { AppExecutor() }
+    single<IGameRepository> { DataRepository(get(), get(), get()) }
 }

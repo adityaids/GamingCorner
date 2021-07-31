@@ -16,7 +16,7 @@ class GameInteractor(private val gameRepository: IGameRepository): GameUsecase {
     override fun getDetail(id: Int): Flow<Resource<GameDetailModel>> =
         gameRepository.getDetail(id)
 
-    override suspend fun setFavorit(game: GameModel) = gameRepository.setFavorit(game)
+    override fun setFavorit(game: GameModel) = gameRepository.setFavorit(game)
 
     override fun updateFavorit(game: GameModel) = gameRepository.updateFavorit(game)
 
