@@ -3,7 +3,6 @@ package com.aditya.gamingcorner.ui.detail
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.aditya.core.data.domain.model.GameDetailModel
-import com.aditya.gamingcorner.R
 import com.aditya.gamingcorner.databinding.ActivityDetailBinding
 import com.aditya.gamingcorner.viewmodel.DetailViewModel
 import com.bumptech.glide.Glide

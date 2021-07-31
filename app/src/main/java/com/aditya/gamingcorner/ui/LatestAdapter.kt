@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.aditya.core.data.domain.model.GameModel
-import com.aditya.core.data.source.remote.response.GameResponse
 import com.aditya.gamingcorner.R
 import com.aditya.gamingcorner.databinding.LatestItemBinding
 import com.bumptech.glide.Glide

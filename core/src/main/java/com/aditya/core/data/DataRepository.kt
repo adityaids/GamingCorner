@@ -1,6 +1,5 @@
 package com.aditya.core.data
 
-import android.util.Log
 import com.aditya.core.data.domain.model.GameDetailModel
 import com.aditya.core.data.domain.model.GameModel
 import com.aditya.core.data.domain.repository.IGameRepository

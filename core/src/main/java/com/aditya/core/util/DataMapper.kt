@@ -75,15 +75,4 @@ object DataMapper {
         isFavorite = false,
         isLatest = false
     )
-
-    fun mapDetailEntityToDomain(input: GameDetailEntity) = GameDetailModel(
-        id = input.id,
-        name = input.name,
-        gameImage = input.gameImage,
-        description = input.description,
-        released = input.released,
-        rating = input.rating,
-        isFavorite = input.isFavorite,
-        isLatest = input.isLatest
-    )
 }

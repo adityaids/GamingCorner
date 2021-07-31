@@ -3,7 +3,6 @@ package com.aditya.gamingcorner.ui.main
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.aditya.core.data.domain.model.GameDetailModel
@@ -13,10 +12,12 @@ import com.aditya.gamingcorner.databinding.ActivityMainBinding
 import com.aditya.gamingcorner.ui.LatestAdapter
 import com.aditya.gamingcorner.ui.PopularAdapter
 import com.aditya.gamingcorner.ui.detail.DetailActivity
+import com.aditya.gamingcorner.ui.favorit.FavoritActivity
+import com.aditya.gamingcorner.ui.search.SearchActivity
 import com.aditya.gamingcorner.viewmodel.MainViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var activityMainBinding: ActivityMainBinding
     private val viewModel: MainViewModel by viewModel()
@@ -122,6 +123,9 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
+
+        activityMainBinding.btnSearch.setOnClickListener(this)
+        activityMainBinding.btnFavorite.setOnClickListener(this)
     }
 
     private fun toDetail(game: GameDetailModel?){
@@ -130,5 +134,18 @@ class MainActivity : AppCompatActivity() {
             putExtra(DetailActivity.EXTRA_DATA, game)
         }
         startActivity(intent)
+    }
+
+    override fun onClick(v: View) {
+        when(v.id){
+            R.id.btn_search -> {
+                val intent = Intent(this@MainActivity, SearchActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.btn_favorite -> {
+                val intent = Intent(this@MainActivity, FavoritActivity::class.java)
+                startActivity(intent)
+            }
+        }
     }
 }

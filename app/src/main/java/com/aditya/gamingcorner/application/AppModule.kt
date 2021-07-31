@@ -1,4 +1,4 @@
-package com.aditya.core.di
+package com.aditya.gamingcorner.application
 
 import com.aditya.core.data.domain.usecase.GameInteractor
 import com.aditya.core.data.domain.usecase.GameUsecase

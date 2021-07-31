@@ -1,7 +1,6 @@
 package com.aditya.core.data.source.local.room
 
 import androidx.room.*
-import com.aditya.core.data.source.local.entity.GameDetailEntity
 import com.aditya.core.data.source.local.entity.GameEntity
 import kotlinx.coroutines.flow.Flow
 

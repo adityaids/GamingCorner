@@ -1,7 +1,6 @@
 package com.aditya.core.data.source.remote.response
 
 import com.google.gson.annotations.SerializedName
-import retrofit2.http.Field
 
 class GameResponse (
     @field:SerializedName("id")

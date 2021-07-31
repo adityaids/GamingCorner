@@ -1,6 +1,5 @@
 package com.aditya.core.data.source.local
 
-import com.aditya.core.data.source.local.entity.GameDetailEntity
 import com.aditya.core.data.source.local.entity.GameEntity
 import com.aditya.core.data.source.local.room.FavoritDao
 
