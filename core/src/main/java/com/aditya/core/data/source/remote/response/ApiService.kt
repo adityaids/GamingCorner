@@ -11,7 +11,7 @@ interface ApiService {
         @Query("search") search: String
     ): AutoFillGameListResponse
 
-    @GET("games?key=&ordering=released")
+    @GET("games?key=&ordering=updated")
     suspend fun latestGame(
         @Query("key") key: String
     ): ListGameResponse

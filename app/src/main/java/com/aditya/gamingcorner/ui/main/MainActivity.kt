@@ -125,6 +125,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun toDetail(game: GameDetailModel?){
+        activityMainBinding.progressBar.visibility = View.GONE
         val intent = Intent(this@MainActivity, DetailActivity::class.java).apply {
             putExtra(DetailActivity.EXTRA_DATA, game)
         }
