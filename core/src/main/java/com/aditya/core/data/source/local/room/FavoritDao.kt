@@ -16,14 +16,8 @@ interface FavoritDao {
     @Query("SELECT * FROM Game where isFavorite = 1")
     fun getAllFavorite(): Flow<List<GameEntity>>
 
-    @Query("SELECT * FROM game_detail where id = :id")
-    fun getDetailGame(id: Int): Flow<GameDetailEntity>
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertGame(game: List<GameEntity>)
-
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertDetailGame(game: GameDetailEntity)
 
     @Update
     fun updateGame(game: GameEntity)
