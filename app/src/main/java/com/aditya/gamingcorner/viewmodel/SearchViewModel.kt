@@ -11,5 +11,5 @@ import kotlinx.coroutines.flow.*
 
 class SearchViewModel(private val gameUsecase: GameUsecase): ViewModel() {
 
-    fun getSearchGameResult(title: String) = gameUsecase.getSearchGameResult(title)
+    fun getSearchGameResult(title: String) = gameUsecase.getSearchGameResult(title).asLiveData()
 }

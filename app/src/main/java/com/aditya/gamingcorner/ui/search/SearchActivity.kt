@@ -1,22 +1,14 @@
 package com.aditya.gamingcorner.ui.search
 
-import android.R
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
-import android.util.Log
 import android.view.View
-import android.widget.ArrayAdapter
-import androidx.core.widget.addTextChangedListener
-import androidx.lifecycle.Observer
-import androidx.lifecycle.lifecycleScope
+import android.widget.SearchView
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.aditya.core.data.source.Resource
 import com.aditya.gamingcorner.databinding.ActivitySearchBinding
+import com.aditya.gamingcorner.ui.GameAdapter
 import com.aditya.gamingcorner.viewmodel.SearchViewModel
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.FlowPreview
-import kotlinx.coroutines.launch
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class SearchActivity : AppCompatActivity() {
@@ -27,6 +19,38 @@ class SearchActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySearchBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val gameAdapter = GameAdapter()
+        with(binding.rvSearch){
+            layoutManager = LinearLayoutManager(context)
+            setHasFixedSize(true)
+            adapter = gameAdapter
+        }
+
+        binding.edSearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                binding.progressBar.visibility = View.VISIBLE
+                searchViewModel.getSearchGameResult(query.toString()).observe(this@SearchActivity,{
+                    if (it != null) {
+                        when (it) {
+                            is Resource.Loading -> binding.progressBar.visibility = View.VISIBLE
+                            is Resource.Success -> {
+                               gameAdapter.setData(it.data)
+                            }
+                            is Resource.Error -> {
+                                binding.viewError.tvError.text = it.message ?: getString(
+                                    com.aditya.gamingcorner.R.string.error)
+                            }
+                        }
+                    }
+                })
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return false
+            }
+        })
 
 
     }
