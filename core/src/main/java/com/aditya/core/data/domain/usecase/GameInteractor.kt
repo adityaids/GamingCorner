@@ -2,6 +2,7 @@ package com.aditya.core.data.domain.usecase
 
 import com.aditya.core.data.domain.model.GameDetailModel
 import com.aditya.core.data.domain.model.GameModel
+import com.aditya.core.data.domain.model.HintModel
 import com.aditya.core.data.domain.repository.IGameRepository
 import com.aditya.core.data.source.Resource
 import kotlinx.coroutines.flow.Flow
@@ -21,5 +22,7 @@ class GameInteractor(private val gameRepository: IGameRepository): GameUsecase {
     override fun updateFavorit(game: GameModel) = gameRepository.updateFavorit(game)
 
     override fun getFavoritList(): Flow<List<GameModel>> = gameRepository.getFavoritList()
+    override fun getAutoFillHint(title: String): Flow<Resource<List<HintModel>>> =
+        gameRepository.getAutoFillHint(title)
 
 }

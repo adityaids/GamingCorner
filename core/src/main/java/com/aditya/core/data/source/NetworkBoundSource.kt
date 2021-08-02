@@ -16,7 +16,7 @@ abstract class NetworkBoundSource<ResultType, RequestType> {
                     emitAll(loadFromDB().map { Resource.Success(it) })
                 }
                 is ApiResponse.Empty -> {
-                    emitAll(loadFromDB().map{ Resource.Success(it) }).wait()
+                    emitAll(loadFromDB().map{ Resource.Success(it) })
                 }
                 is ApiResponse.Error -> {
                     onFetchFailed()

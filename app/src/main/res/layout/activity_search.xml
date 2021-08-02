@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="@dimen/_8sdp"
     android:background="@color/background_color"
     tools:context=".ui.search.SearchActivity">
 
@@ -13,18 +14,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:background="@color/primary_light"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:hint="@string/search"
         android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:boxCornerRadiusBottomEnd="8dp"
+        app:boxCornerRadiusTopEnd="8dp"
+        app:boxCornerRadiusBottomStart="8dp"
+        app:boxCornerRadiusTopStart="8dp">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/ed_username"
+            android:id="@+id/ed_game_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/round_corner_toggle"
             android:textColor="@color/white"/>
     </com.google.android.material.textfield.TextInputLayout>
 
