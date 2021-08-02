@@ -3,14 +3,12 @@ package com.aditya.core.util
 import com.aditya.core.data.domain.model.GameDetailModel
 import com.aditya.core.data.domain.model.GameModel
 import com.aditya.core.data.source.local.entity.GameEntity
-import com.aditya.core.data.domain.model.HintModel
 import com.aditya.core.data.source.remote.response.GameResponse
 import com.aditya.core.data.source.remote.response.GamesDetailResponse
-import com.aditya.core.data.source.remote.response.HintResponse
 
 object DataMapper {
 
-    fun mapResponsesPopularToEntities(input: List<GameResponse>): List<GameEntity> {
+    fun mapResponsesToEntities(input: List<GameResponse>): List<GameEntity> {
         val gameList = ArrayList<GameEntity>()
         input.map {
             val game = GameEntity(
@@ -76,11 +74,4 @@ object DataMapper {
         isFavorite = false,
         isLatest = false
     )
-
-    fun mapHintResponseToDomain(input: List<HintResponse>): List<HintModel> =
-        input.map {
-            HintModel(
-                gameTitle = it.gameTitle
-            )
-        }
 }

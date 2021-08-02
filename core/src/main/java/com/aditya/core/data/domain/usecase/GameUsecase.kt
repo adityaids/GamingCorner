@@ -2,7 +2,6 @@ package com.aditya.core.data.domain.usecase
 
 import com.aditya.core.data.domain.model.GameDetailModel
 import com.aditya.core.data.domain.model.GameModel
-import com.aditya.core.data.domain.model.HintModel
 import com.aditya.core.data.source.Resource
 import kotlinx.coroutines.flow.Flow
 
@@ -13,5 +12,5 @@ interface GameUsecase {
     fun setFavorit(game: GameModel)
     fun updateFavorit(game: GameModel)
     fun getFavoritList(): Flow<List<GameModel>>
-    fun getAutoFillHint(title: String): Flow<Resource<List<HintModel>>>
+    fun getSearchGameResult(title: String): Flow<Resource<List<GameModel>>>
 }

@@ -47,30 +47,13 @@ class RemoteDataSource(private val apiService: ApiService) {
         }.flowOn(Dispatchers.IO)
     }
 
-    suspend fun getSearchGame(title: String): Flow<ApiResponse<List<GameResponse>>>{
+    suspend fun getSearchGameResult(title: String): Flow<ApiResponse<List<GameResponse>>>{
         return flow {
             try {
                 val response = apiService.searchGame(API_KEY, title)
                 val dataArray = response.gameList
                 if (dataArray.isNotEmpty()){
                     emit(ApiResponse.Success(response.gameList))
-                } else {
-                    emit(ApiResponse.Empty)
-                }
-            } catch (e : Exception){
-                emit(ApiResponse.Error(e.toString()))
-                Log.e("RemoteDataSource", e.toString())
-            }
-        }.flowOn(Dispatchers.IO)
-    }
-
-    suspend fun getHintList(title: String): Flow<ApiResponse<List<HintResponse>>>{
-        return flow {
-            try {
-                val response = apiService.getAutoFillHint(API_KEY, title)
-                val dataArray = response.HintTitleList
-                if (dataArray.isNotEmpty()){
-                    emit(ApiResponse.Success(response.HintTitleList))
                 } else {
                     emit(ApiResponse.Empty)
                 }

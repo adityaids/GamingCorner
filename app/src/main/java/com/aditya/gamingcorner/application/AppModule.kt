@@ -6,6 +6,8 @@ import com.aditya.gamingcorner.viewmodel.DetailViewModel
 import com.aditya.gamingcorner.viewmodel.FavoritViewModel
 import com.aditya.gamingcorner.viewmodel.MainViewModel
 import com.aditya.gamingcorner.viewmodel.SearchViewModel
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 

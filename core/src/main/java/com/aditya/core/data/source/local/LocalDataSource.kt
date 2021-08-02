@@ -8,5 +8,6 @@ class LocalDataSource(private val favoritDao: FavoritDao) {
     fun getLatestGame() = favoritDao.getLatestGame()
     fun getAllFavorit() = favoritDao.getAllFavorite()
     fun updateFavorit(game: GameEntity) = favoritDao.updateGame(game)
+    fun getSearchGameResult(name: String) = favoritDao.getSearchGameResult(name)
     suspend fun insertGame(gameList: List<GameEntity>) = favoritDao.insertGame(gameList)
 }

@@ -2,14 +2,12 @@ package com.aditya.core.data
 
 import com.aditya.core.data.domain.model.GameDetailModel
 import com.aditya.core.data.domain.model.GameModel
-import com.aditya.core.data.domain.model.HintModel
 import com.aditya.core.data.domain.repository.IGameRepository
 import com.aditya.core.data.source.NetworkBoundSource
 import com.aditya.core.data.source.Resource
 import com.aditya.core.data.source.local.LocalDataSource
 import com.aditya.core.data.source.remote.RemoteDataSource
 import com.aditya.core.data.source.remote.network.ApiResponse
-import com.aditya.core.data.source.remote.response.HintResponse
 import com.aditya.core.data.source.remote.response.GameResponse
 import com.aditya.core.util.AppExecutor
 import com.aditya.core.util.DataMapper
@@ -34,7 +32,7 @@ class DataRepository(
             remoteDataSource.getPopular()
 
         override suspend fun saveCallResult(data: List<GameResponse>) {
-            val gameList = DataMapper.mapResponsesPopularToEntities(data)
+            val gameList = DataMapper.mapResponsesToEntities(data)
             localDataSource.insertGame(gameList)
         }
 
@@ -85,22 +83,24 @@ class DataRepository(
         return localDataSource.getAllFavorit().map { DataMapper.mapEntitiesToDomain(it) }
     }
 
-    override fun getAutoFillHint(title: String): Flow<Resource<List<HintModel>>> =
-        object : NetworkBoundSource<List<HintModel>, List<HintResponse>>(){
-            override fun loadFromDB(): Flow<List<HintModel>> {
-                TODO("Not yet implemented")
+    override fun getSearchGameResult(title: String): Flow<Resource<List<GameModel>>> =
+        object : NetworkBoundSource<List<GameModel>, List<GameResponse>>(){
+            override fun loadFromDB(): Flow<List<GameModel>> {
+                return localDataSource.getSearchGameResult(title).map { DataMapper.mapEntitiesToDomain(it) }
             }
 
-            override fun shouldFetch(data: List<HintModel>?): Boolean =
-                true
+            override fun shouldFetch(data: List<GameModel>?): Boolean =
+                data == null || data.isEmpty()
 
-            override suspend fun createCall(): Flow<ApiResponse<List<HintResponse>>> =
-                remoteDataSource.getHintList(title)
+            override suspend fun createCall(): Flow<ApiResponse<List<GameResponse>>> =
+                remoteDataSource.getSearchGameResult(title)
 
 
-            override suspend fun saveCallResult(data: List<HintResponse>) {
-                val listHint = DataMapper.mapHintResponseToDomain(data)
+            override suspend fun saveCallResult(data: List<GameResponse>) {
+                val game = DataMapper.mapResponsesToEntities(data)
+                localDataSource.insertGame(game)
             }
 
         }.asFlow()
+
 }

@@ -21,4 +21,7 @@ dependencies {
     implementation "org.koin:koin-core:$koin_version"
     implementation "org.koin:koin-android:$koin_version"
     implementation "org.koin:koin-android-viewmodel:$koin_version"
+
+    //coroutine
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.2.0"
 }

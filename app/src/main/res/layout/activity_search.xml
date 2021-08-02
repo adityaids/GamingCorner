@@ -15,8 +15,6 @@
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:hint="@string/search"
-        android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -25,10 +23,12 @@
         app:boxCornerRadiusBottomStart="8dp"
         app:boxCornerRadiusTopStart="8dp">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <AutoCompleteTextView
             android:id="@+id/ed_game_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="@string/search"
+            style="@style/Widget.MaterialComponents.AutoCompleteTextView.FilledBox"
             android:background="@drawable/round_corner_toggle"
             android:textColor="@color/white"/>
     </com.google.android.material.textfield.TextInputLayout>
@@ -44,4 +44,27 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:listitem="@layout/favorit_item"/>
 
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
+        android:layout_marginBottom="@dimen/_8sdp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+        android:id="@+id/view_error"
+        layout="@layout/view_error"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
