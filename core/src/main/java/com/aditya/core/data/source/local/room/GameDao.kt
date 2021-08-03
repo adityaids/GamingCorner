@@ -5,7 +5,7 @@ import com.aditya.core.data.source.local.entity.GameEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface FavoritDao {
+interface GameDao {
     @Query("SELECT * FROM Game where latest = 1")
     fun getLatestGame(): Flow<List<GameEntity>>
 

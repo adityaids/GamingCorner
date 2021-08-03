@@ -19,7 +19,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.main.MainActivity" />
         </activity>
-        <activity android:name=".ui.favorit.FavoritActivity" />
         <activity
             android:name=".ui.splash.SplashActivity"
             android:theme="@style/fullscreen">

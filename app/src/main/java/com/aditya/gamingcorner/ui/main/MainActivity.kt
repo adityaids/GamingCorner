@@ -12,7 +12,6 @@ import com.aditya.gamingcorner.databinding.ActivityMainBinding
 import com.aditya.gamingcorner.ui.LatestAdapter
 import com.aditya.gamingcorner.ui.PopularAdapter
 import com.aditya.gamingcorner.ui.detail.DetailActivity
-import com.aditya.gamingcorner.ui.favorit.FavoritActivity
 import com.aditya.gamingcorner.ui.search.SearchActivity
 import com.aditya.gamingcorner.viewmodel.MainViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -143,7 +142,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 startActivity(intent)
             }
             R.id.btn_favorite -> {
-                val intent = Intent(this@MainActivity, FavoritActivity::class.java)
+                //val intent = Intent(this@MainActivity, com.aditya.feature.FavoritActivity::class.java)
                 startActivity(intent)
             }
         }

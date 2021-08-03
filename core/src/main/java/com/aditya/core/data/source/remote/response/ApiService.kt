@@ -27,9 +27,4 @@ interface ApiService {
         @Query("key") key: String
     ): GamesDetailResponse
 
-    @GET("games?key=&search=")
-    suspend fun getAutoFillHint(
-        @Query("key") key: String,
-        @Query("search") search: String
-    ): HintListResponse
 }

@@ -7,5 +7,5 @@ import com.aditya.core.data.source.local.entity.GameEntity
 
 @Database(entities = [GameEntity::class, GameDetailEntity::class], version = 1, exportSchema = false)
 abstract class GameDatabase : RoomDatabase() {
-    abstract fun favoritDao(): FavoritDao
+    abstract fun gameDao(): GameDao
 }

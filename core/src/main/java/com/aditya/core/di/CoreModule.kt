@@ -17,7 +17,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 val databaseModule = module {
-    factory { get<GameDatabase>().favoritDao() }
+    factory { get<GameDatabase>().gameDao() }
     single {
         Room.databaseBuilder(
             androidContext(),
