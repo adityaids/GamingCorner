@@ -142,8 +142,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 startActivity(intent)
             }
             R.id.btn_favorite -> {
-                //val intent = Intent(this@MainActivity, com.aditya.feature.FavoritActivity::class.java)
-                startActivity(intent)
+                startActivity(Intent(this, Class.forName("com.aditya.feature.ui.favorit.FavoritActivity")))
             }
         }
     }
