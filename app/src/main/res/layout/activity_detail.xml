@@ -12,6 +12,25 @@
         android:layout_height="wrap_content"
         android:descendantFocusability="blocksDescendants">
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_back"
+            android:layout_width="@dimen/_32sdp"
+            android:layout_height="@dimen/_32sdp"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:backgroundTint="@color/secondary_background"
+            app:icon="@drawable/ic_back"
+            app:iconGravity="textStart"
+            android:padding="2dp"
+            app:iconPadding="0dp"
+            android:insetLeft="0dp"
+            android:insetTop="0dp"
+            android:insetRight="0dp"
+            android:insetBottom="0dp"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MyApp.Button.Circle"/>
+
         <ImageView
             android:id="@+id/game_image"
             android:layout_width="match_parent"
@@ -80,6 +99,20 @@
                 android:insetBottom="0dp"
                 app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MyApp.Button.Circle"/>
 
+            <RatingBar
+                android:id="@+id/rating_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginStart="@dimen/_12sdp"
+                style="?android:attr/ratingBarStyleIndicator"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_games_released"
+                android:progressTint="@color/secondary_dark"
+                android:progressBackgroundTint="@color/primary_dark"
+                android:numStars="5"
+                tools:rating="3.5"/>
+
             <TextView
                 android:id="@+id/tv_description"
                 android:layout_width="match_parent"
@@ -89,7 +122,7 @@
                 android:layout_marginEnd="@dimen/_12sdp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/btn_favorite"
+                app:layout_constraintTop_toBottomOf="@id/rating_bar"
                 android:textSize="@dimen/_14ssp"
                 android:fontFamily="@font/amaranth"
                 android:textColor="@color/white"
