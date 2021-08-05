@@ -80,34 +80,15 @@
                 android:textSize="@dimen/_12ssp"
                 tools:text="18-01-1995"/>
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_favorite"
-                android:layout_width="@dimen/_32sdp"
-                android:layout_height="@dimen/_32sdp"
-                android:layout_marginTop="@dimen/_4sdp"
-                android:layout_marginEnd="@dimen/_12sdp"
-                app:layout_constraintTop_toBottomOf="@id/tv_games_released"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:backgroundTint="@color/secondary_light"
-                app:icon="@drawable/ic_favorite_border_24"
-                app:iconGravity="textStart"
-                android:padding="2dp"
-                app:iconPadding="0dp"
-                android:insetLeft="0dp"
-                android:insetTop="0dp"
-                android:insetRight="0dp"
-                android:insetBottom="0dp"
-                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MyApp.Button.Circle"/>
-
             <RatingBar
                 android:id="@+id/rating_bar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_8sdp"
-                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginEnd="@dimen/_12sdp"
                 style="?android:attr/ratingBarStyleIndicator"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_games_released"
+                app:layout_constraintEnd_toEndOf="parent"
                 android:progressTint="@color/secondary_dark"
                 android:progressBackgroundTint="@color/primary_dark"
                 android:numStars="5"

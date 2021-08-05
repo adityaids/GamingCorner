@@ -43,9 +43,9 @@ class LatestAdapter: RecyclerView.Adapter<LatestAdapter.LatestViewHolder>() {
         private val binding: LatestItemBinding
     ): RecyclerView.ViewHolder(binding.root) {
         fun bind(data: GameModel){
-
             Glide.with(itemView.context)
                 .load(data.gameImage)
+                .error(R.drawable.ic_broken_image)
                 .into(binding.gamesImage)
             binding.tvGamesTitle.text = data.name
             binding.tvGamesReleased.text = data.released

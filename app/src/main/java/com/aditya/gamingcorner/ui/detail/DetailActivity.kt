@@ -26,12 +26,12 @@ class DetailActivity : AppCompatActivity(), View.OnClickListener {
         val intent = intent.getParcelableExtra<GameModel>(EXTRA_DATA) as GameModel
         initView(intent)
         binding.btnBack.setOnClickListener(this)
-        binding.btnFavorite.setOnClickListener(this)
     }
 
     private fun initView(data: GameModel){
         Glide.with(this)
             .load(data.gameImage)
+            .error(R.drawable.ic_broken_image)
             .into(binding.gameImage)
         binding.tvDetailTitle.text = data.name
         binding.tvGamesReleased.text = data.released
@@ -42,9 +42,6 @@ class DetailActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
         when(v?.id){
             R.id.btn_back -> this.finish()
-            R.id.btn_favorite -> {
-
-            }
         }
     }
 }

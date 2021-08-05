@@ -6,16 +6,16 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface GameDao {
-    @Query("SELECT * FROM Game where latest = 1")
+    @Query("SELECT * FROM Game WHERE latest = 1")
     fun getLatestGame(): Flow<List<GameEntity>>
 
-    @Query("SELECT * FROM Game where rating > 4.0")
+    @Query("SELECT * FROM Game WHERE rating > 4.0")
     fun getPopularGame(): Flow<List<GameEntity>>
 
-    @Query("SELECT * FROM Game where isFavorite = 1")
+    @Query("SELECT * FROM Game WHERE isFavorite = 1")
     fun getAllFavorite(): Flow<List<GameEntity>>
 
-    @Query("SELECT * FROM Game where name = :name")
+    @Query("SELECT * FROM Game WHERE name LIKE '%' || :name || '%' ")
     fun getSearchGameResult(name: String): Flow<List<GameEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

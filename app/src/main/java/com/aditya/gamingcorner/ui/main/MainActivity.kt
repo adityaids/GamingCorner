@@ -10,7 +10,7 @@ import com.aditya.core.data.source.Resource
 import com.aditya.gamingcorner.R
 import com.aditya.gamingcorner.databinding.ActivityMainBinding
 import com.aditya.gamingcorner.ui.LatestAdapter
-import com.aditya.gamingcorner.ui.PopularAdapter
+import com.aditya.gamingcorner.ui.GameAdapter
 import com.aditya.gamingcorner.ui.detail.DetailActivity
 import com.aditya.gamingcorner.ui.search.SearchActivity
 import com.aditya.gamingcorner.viewmodel.MainViewModel
@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(activityMainBinding.root)
 
-        val popularAdapter = PopularAdapter()
+        val popularAdapter = GameAdapter()
         val latestAdapter = LatestAdapter()
 
         with(activityMainBinding.rvPopular){
@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             })
         }
 
-        latestAdapter.onItemClick = {selectedData->
+        latestAdapter.onItemClick = { selectedData->
             activityMainBinding.progressBar.visibility = View.VISIBLE
             viewModel.getDetailGame(selectedData.id).observe(this, {
                 if (it != null) {
