@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.aditya.core.data.domain.model.GameDetailModel
+import com.aditya.core.data.domain.model.GameModel
 import com.aditya.core.data.source.Resource
 import com.aditya.gamingcorner.R
 import com.aditya.gamingcorner.databinding.ActivityMainBinding
@@ -127,7 +127,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         activityMainBinding.btnFavorite.setOnClickListener(this)
     }
 
-    private fun toDetail(game: GameDetailModel?){
+    private fun toDetail(game: GameModel?){
         activityMainBinding.progressBar.visibility = View.GONE
         val intent = Intent(this@MainActivity, DetailActivity::class.java).apply {
             putExtra(DetailActivity.EXTRA_DATA, game)

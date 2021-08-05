@@ -15,6 +15,8 @@ data class GameEntity (
     val name: String,
     @ColumnInfo(name = "background_image")
     val gameImage: String,
+    @ColumnInfo(name = "description")
+    val description: String,
     @ColumnInfo(name = "released")
     val released: String,
     @ColumnInfo(name = "rating")

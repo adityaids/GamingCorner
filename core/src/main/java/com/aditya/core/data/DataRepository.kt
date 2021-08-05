@@ -1,6 +1,5 @@
 package com.aditya.core.data
 
-import com.aditya.core.data.domain.model.GameDetailModel
 import com.aditya.core.data.domain.model.GameModel
 import com.aditya.core.data.domain.repository.IGameRepository
 import com.aditya.core.data.source.NetworkBoundSource
@@ -57,15 +56,15 @@ class DataRepository(
 
         }.asFlow()
 
-    override fun getDetail(id: Int): Flow<Resource<GameDetailModel>> =
+    override fun getDetail(id: Int): Flow<Resource<GameModel>> =
         flow {
             when (val apiResponse = remoteDataSource.getGameDetail(id).first()) {
                 is ApiResponse.Success -> {
                     val data = DataMapper.mapDetailResponseToDomain(apiResponse.data)
                     emit(Resource.Success(data))
                 }
-                is ApiResponse.Empty -> emit(Resource.Success(GameDetailModel()))
-                is ApiResponse.Error -> emit(Resource.Error<GameDetailModel>(apiResponse.errorMessage))
+                is ApiResponse.Empty -> emit(Resource.Success(GameModel()))
+                is ApiResponse.Error -> emit(Resource.Error<GameModel>(apiResponse.errorMessage))
             }
         }
 

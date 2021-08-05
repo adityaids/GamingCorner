@@ -1,11 +1,16 @@
 package com.aditya.core.data.domain.model
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class GameModel(
-    val id: Int,
-    val name: String,
-    val gameImage: String,
-    val released: String?,
-    val rating: Float,
-    var isFavorite: Boolean,
-    var isLatest: Boolean
-)
+    var id: Int = 0,
+    var name: String? = "",
+    var gameImage: String? = "",
+    var description: String? = "",
+    var released: String? = "",
+    var rating: Float = 0.0f,
+    var isFavorite: Boolean = false,
+    var isLatest: Boolean = false
+): Parcelable

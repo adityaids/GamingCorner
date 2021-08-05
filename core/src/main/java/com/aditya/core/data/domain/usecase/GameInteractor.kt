@@ -1,6 +1,5 @@
 package com.aditya.core.data.domain.usecase
 
-import com.aditya.core.data.domain.model.GameDetailModel
 import com.aditya.core.data.domain.model.GameModel
 import com.aditya.core.data.domain.repository.IGameRepository
 import com.aditya.core.data.source.Resource
@@ -13,7 +12,7 @@ class GameInteractor(private val gameRepository: IGameRepository): GameUsecase {
     override fun getLatestGame(): Flow<Resource<List<GameModel>>> =
         gameRepository.getLatestGame()
 
-    override fun getDetail(id: Int): Flow<Resource<GameDetailModel>> =
+    override fun getDetail(id: Int): Flow<Resource<GameModel>> =
         gameRepository.getDetail(id)
 
     override fun setFavorit(game: GameModel) = gameRepository.setFavorit(game)

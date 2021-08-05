@@ -1,6 +1,5 @@
 package com.aditya.core.util
 
-import com.aditya.core.data.domain.model.GameDetailModel
 import com.aditya.core.data.domain.model.GameModel
 import com.aditya.core.data.source.local.entity.GameEntity
 import com.aditya.core.data.source.remote.response.GameResponse
@@ -15,6 +14,7 @@ object DataMapper {
                 id = it.id,
                 name = it.name,
                 gameImage = it.image?:"R.drawable.ic_broken_image",
+                description = "empty",
                 released = it.released?:"Unknown",
                 rating = it.rating,
                 isFavorite = false,
@@ -32,6 +32,7 @@ object DataMapper {
                 id = it.id,
                 name = it.name,
                 gameImage = it.image?:"R.drawable.ic_broken_image",
+                description = "empty",
                 released = it.released?:"Unknown",
                 rating = it.rating,
                 isFavorite = false,
@@ -48,6 +49,7 @@ object DataMapper {
                 id = it.id,
                 name = it.name,
                 gameImage = it.gameImage,
+                description = it.description,
                 released = it.released,
                 rating = it.rating,
                 isFavorite = it.isFavorite,
@@ -56,15 +58,16 @@ object DataMapper {
         }
     fun mapDomainToEntity(input: GameModel) = GameEntity(
         id = input.id,
-        name = input.name,
-        gameImage = input.gameImage,
+        name = input.name?:"empty",
+        gameImage = input.gameImage?:"empty",
+        description = input.description?:"empty",
         released = input.released?:"unknown",
         rating = input.rating,
         isFavorite = input.isFavorite,
         isLatest = input.isLatest
     )
 
-    fun mapDetailResponseToDomain(input: GamesDetailResponse) = GameDetailModel(
+    fun mapDetailResponseToDomain(input: GamesDetailResponse) = GameModel(
         id = input.id,
         name = input.name,
         gameImage = input.image,
