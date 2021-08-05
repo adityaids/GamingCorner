@@ -36,11 +36,25 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <include
-        android:id="@+id/view_error"
-        layout="@layout/view_error"
+        android:id="@+id/feature_error"
+        layout="@layout/feature_error"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_nothing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="@string/nothing"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_16ssp"
+        android:textAlignment="center"
+        android:visibility="gone"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

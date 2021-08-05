@@ -13,6 +13,11 @@
         <dist:fusing dist:include="true" />
     </dist:module>
     <application>
-        <activity android:name=".ui.favorit.FavoritActivity" />
+        <activity android:name=".ui.favorit.FavoritActivity"
+            android:parentActivityName="com.aditya.gamingcorner.ui.main.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.aditya.gamingcorner.ui.main.MainActivity" />
+        </activity>
     </application>
 </manifest>

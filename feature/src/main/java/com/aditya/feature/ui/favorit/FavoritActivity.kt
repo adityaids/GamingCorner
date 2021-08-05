@@ -38,10 +38,13 @@ class FavoritActivity : AppCompatActivity() {
         favoritViewModel.getFavoritList.observe(this, {
             if (it != null) {
                 favoritAdapter.setData(it)
+            } else {
+                binding.tvNothing.visibility = View.VISIBLE
             }
         })
 
         favoritAdapter.onItemClick = { selectedData ->
+            binding.progressBar.visibility = View.VISIBLE
             favoritViewModel.getDetailGame(selectedData.id).observe(this,{
                 if (it != null) {
                     when (it) {
@@ -50,7 +53,7 @@ class FavoritActivity : AppCompatActivity() {
                             toDetail(it.data)
                         }
                         is Resource.Error -> {
-                            binding.viewError.tvError.text = it.message ?: getString(R.string.error)
+                            binding.featureError.tvError.text = it.message ?: getString(R.string.error)
                         }
                     }
                 }
