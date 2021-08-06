@@ -50,6 +50,12 @@ class GameAdapter: RecyclerView.Adapter<GameAdapter.PopularViewHolder>() {
             binding.tvGamesReleased.text = data.released
             binding.ratingBar.rating = data.rating
 
+            if (data.isFavorite) {
+                binding.btnFavorite.icon = ContextCompat.getDrawable(itemView.context, R.drawable.ic_favorite_24)
+            } else {
+                binding.btnFavorite.icon = ContextCompat.getDrawable(itemView.context, R.drawable.ic_favorite_border_24)
+            }
+
             binding.btnFavorite.setOnClickListener {
                 if (data.isFavorite) {
                     data.isFavorite = false

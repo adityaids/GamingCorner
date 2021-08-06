@@ -50,6 +50,12 @@ class LatestAdapter: RecyclerView.Adapter<LatestAdapter.LatestViewHolder>() {
             binding.tvGamesTitle.text = data.name
             binding.tvGamesReleased.text = data.released
 
+            if (data.isFavorite) {
+                binding.btnFavorite.icon = ContextCompat.getDrawable(itemView.context, R.drawable.ic_favorite_24)
+            } else {
+                binding.btnFavorite.icon = ContextCompat.getDrawable(itemView.context, R.drawable.ic_favorite_border_24)
+            }
+
             binding.btnFavorite.setOnClickListener {
                 if (data.isFavorite) {
                     data.isFavorite = false

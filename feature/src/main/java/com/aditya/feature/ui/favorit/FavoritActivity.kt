@@ -36,7 +36,7 @@ class FavoritActivity : AppCompatActivity() {
         }
 
         favoritViewModel.getFavoritList.observe(this, {
-            if (it.isNotEmpty()) {
+            if (it != null) {
                 binding.tvNothing.visibility = View.GONE
                 favoritAdapter.setData(it)
             }
