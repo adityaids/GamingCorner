@@ -80,7 +80,7 @@ class SearchActivity : AppCompatActivity() {
                 }
                 is Resource.Error -> {
                     binding.viewError.tvError.text = result.message ?: getString(
-                        com.aditya.gamingcorner.R.string.error)
+                        R.string.error)
                 }
             }
         })

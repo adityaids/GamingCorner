@@ -39,7 +39,7 @@ android {
         viewBinding = true
     }
 
-    dynamicFeatures = [':feature']
+    dynamicFeatures = [':favorit']
 }
 
 dependencies {

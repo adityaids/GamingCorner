@@ -12,7 +12,5 @@ class GameResponse (
     @field:SerializedName("released")
     val released: String?,
     @field:SerializedName("rating")
-    val rating: Float,
-    var isFavorited: Boolean = false,
-    var isLatest: Boolean = false
+    val rating: Float
         )
