@@ -35,5 +35,4 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation project(":app")
     implementation project(":core")
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }

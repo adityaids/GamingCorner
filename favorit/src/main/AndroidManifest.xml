@@ -12,7 +12,7 @@
         </dist:delivery>
         <dist:fusing dist:include="true" />
     </dist:module>
-    <application>
+    <application android:icon="@mipmap/ic_launcher">
         <activity android:name=".ui.favorit.FavoritActivity"
             android:parentActivityName="com.aditya.gamingcorner.ui.main.MainActivity">
             <meta-data
