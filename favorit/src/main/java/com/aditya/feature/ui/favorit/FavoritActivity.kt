@@ -10,7 +10,7 @@ import com.aditya.core.data.source.Resource
 import com.aditya.feature.databinding.ActivityFavoritBinding
 import com.aditya.feature.di.favoritModule
 import com.aditya.feature.viewmodel.FavoritViewModel
-import com.aditya.gamingcorner.R
+import com.aditya.feature.R
 import com.aditya.gamingcorner.ui.detail.DetailActivity
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.context.loadKoinModules
@@ -66,7 +66,7 @@ class FavoritActivity : AppCompatActivity() {
 
     private fun toDetail(game: GameModel?){
         binding.progressBar.visibility = View.GONE
-        val intent = Intent(this@FavoritActivity, DetailActivity::class.java).apply {
+        val intent = Intent(this@FavoritActivity, Class.forName("com.aditya.gamingcorner.ui.detail.DetailActivity")).apply {
             putExtra(DetailActivity.EXTRA_DATA, game)
         }
         startActivity(intent)
