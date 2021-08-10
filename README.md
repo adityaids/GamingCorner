@@ -1,6 +1,6 @@
 # GamingCorner
 
-[![<adityids>](https://circleci.com/gh/adityaids/GamingCorner.svg?style=svg)](https://circleci.com/gh/adityaids/GamingCorner
+[![<adityids>](https://circleci.com/gh/adityaids/GamingCorner.svg?style=svg)](https://circleci.com/gh/adityaids/GamingCorner)
 
 ## Getting Started
 
