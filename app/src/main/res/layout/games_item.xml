@@ -13,8 +13,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:backgroundTint="@android:color/transparent">
+        android:layout_height="match_parent">
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/bg"
@@ -73,6 +72,7 @@
             android:fontFamily="@font/roboto_condensed_bold"
             android:textSize="@dimen/_18ssp"
             android:textAlignment="viewStart"
+            android:background="@android:color/transparent"
             tools:text="Captain Marvel 2020"/>
 
         <TextView
@@ -81,6 +81,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_8sdp"
             android:layout_marginEnd="@dimen/_8sdp"
+            android:background="@android:color/transparent"
             app:layout_constraintTop_toBottomOf="@id/tv_games_title"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -99,6 +100,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_games_released"
+            android:background="@android:color/transparent"
             android:progressTint="@color/secondary_dark"
             android:progressBackgroundTint="@color/primary_dark"
             android:numStars="5"

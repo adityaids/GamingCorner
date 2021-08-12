@@ -14,8 +14,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:backgroundTint="@android:color/transparent">
+        android:layout_height="match_parent">
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/bg"
@@ -39,7 +38,6 @@
             app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize20Percent"/>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_delete"
             android:layout_width="@dimen/_24sdp"
             android:layout_height="@dimen/_24sdp"
             android:layout_marginTop="@dimen/_46sdp"
@@ -69,6 +67,7 @@
             app:layout_constraintTop_toBottomOf="@id/game_image"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            android:background="@android:color/transparent"
             android:ellipsize="end"
             android:maxLines="1"
             android:fontFamily="@font/roboto_condensed_bold"
@@ -85,6 +84,7 @@
             app:layout_constraintTop_toBottomOf="@id/tv_games_title"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            android:background="@android:color/transparent"
             android:textSize="@dimen/_14ssp"
             android:ellipsize="end"
             android:maxLines="2"
@@ -100,6 +100,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_games_released"
+            android:background="@android:color/transparent"
             android:progressTint="@color/secondary_dark"
             android:progressBackgroundTint="@color/primary_dark"
             android:numStars="5"

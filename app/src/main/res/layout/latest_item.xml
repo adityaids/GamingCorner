@@ -14,7 +14,6 @@
         android:layout_height="match_parent">
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/games_image"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -43,6 +42,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            android:background="@android:color/transparent"
             android:ellipsize="end"
             android:maxLines="2"
             android:fontFamily="@font/roboto_condensed_bold"
@@ -59,6 +59,7 @@
             app:layout_constraintTop_toBottomOf="@id/tv_games_title"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            android:background="@android:color/transparent"
             android:ellipsize="end"
             android:maxLines="1"
             android:fontFamily="@font/amaranth"

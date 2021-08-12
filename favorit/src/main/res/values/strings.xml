@@ -7,6 +7,5 @@
     <string name="search">Search</string>
     <string name="latest_games">Latest Games</string>
     <string name="error">Oops Something Wrong</string>
-    <string name="action_favorit">action_favorit</string>
     <string name="nothing">You have added nothing here, let\'s add something!</string>
 </resources>
