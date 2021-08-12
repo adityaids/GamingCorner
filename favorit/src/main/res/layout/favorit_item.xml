@@ -38,6 +38,7 @@
             app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize20Percent"/>
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_delete"
             android:layout_width="@dimen/_24sdp"
             android:layout_height="@dimen/_24sdp"
             android:layout_marginTop="@dimen/_46sdp"

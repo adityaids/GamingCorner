@@ -8,6 +8,7 @@
     tools:context=".ui.favorit.FavoritActivity">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_favorit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_16sdp"
@@ -19,6 +20,7 @@
         tools:listitem="@layout/favorit_item"/>
 
     <ProgressBar
+        android:id="@+id/progress_bar"
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -33,6 +35,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <include
+        android:id="@+id/feature_error"
         layout="@layout/feature_error"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -41,6 +44,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/tv_nothing"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
